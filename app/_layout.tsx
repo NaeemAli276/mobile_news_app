@@ -11,10 +11,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font'
 
+const queryClient = new QueryClient()
+
 export default function RootLayout() {
-
-  const queryClient = new QueryClient()
-
 
   const onCopy = async (text: string) => {
     try {
@@ -44,7 +43,7 @@ export default function RootLayout() {
           <SheetProvider>
             <Stack>
               <Stack.Screen
-                name="Home"
+                name="index"
                 options={{ headerShown: false }}
               />
               <Stack.Screen
@@ -52,7 +51,7 @@ export default function RootLayout() {
                 options={{ headerShown: false }}
               />
               <Stack.Screen
-                name="Search"
+                name="search"
                 options={{ headerShown: false }}
               />
               <Stack.Screen
