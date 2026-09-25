@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from "react-native";
+
 export const API_KEY = '2a4e2373578f4e7d9eabc4b9220d232e'
 
 export interface Article {
@@ -6,7 +8,7 @@ export interface Article {
     title: string;
     description: string | null;
     url: string;
-    urlToImage: string | null;
+    urlToImage: string;
     publishedAt: string; // ISO 8601 date string
     content: string | null;
 }

@@ -9,7 +9,7 @@ interface TouchableIconProps {
 const TouchableIcon: React.FC<TouchableIconProps> = ({ icon, ftn }) => {
     return (
         <TouchableOpacity
-            className='bg-slate-200 p-2 rounded-full'
+            className='bg-slate-700 p-2 rounded-full'
             onPress={ftn}
         >
             {icon}

@@ -16,7 +16,7 @@ const Topbar = () => {
         >
 
             <Text
-                className='font-semibold text-3xl text-black'
+                className='font-medium text-2xl text-teal-500'
             >
                 Stratum
             </Text>
@@ -29,8 +29,9 @@ const Topbar = () => {
                     icon={
                         <Bookmark
                             size={20}
-                            color={'#000000'}
+                            color={'#14b8a6'}
                             strokeWidth={1.5}
+                            fill={'#14b8a6'}
                         />
                     }
                     ftn={() => nav.navigate('bookmarked')}
@@ -41,8 +42,9 @@ const Topbar = () => {
                     icon={
                         <Search
                             size={20}
-                            color={'#000000'}
+                            color={'#14b8a6'}
                             strokeWidth={1.5}
+                            fill={'#14b8a6'}
                         />
                     }
                     ftn={() => nav.navigate('search')}
