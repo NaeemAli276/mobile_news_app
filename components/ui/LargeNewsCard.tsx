@@ -17,7 +17,7 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
     url,
     urlToImage,
     publishedAt,
-    content
+    ftn
 }) => {
 
     const [thumbnail_error, set_thumbnail_error] = useState(false)
@@ -33,12 +33,13 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
     return (
         <Pressable
             className='relative aspect-video flex flex-col w-[21rem] h-auto'
+            onPress={ftn}
         >
 
             {
                 thumbnail_error
                 ?   <View
-                        className='aspect-video size-48 bg-slate-800 flex items-center justify-center rounded-md flex-col gap-2'
+                        className='aspect-video size-48 bg-slate-800 flex items-center justify-center rounded-xl flex-col gap-2'
                     >
                         <ImageIcon
                             color={'#475569'}
@@ -48,7 +49,7 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
                     </View>   
                 :   <Image
                         source={imageSource}
-                        className='aspect-video size-48 rounded-md'
+                        className='aspect-video size-48 rounded-xl'
                         onError={() => handle_image_error()}
                     />
             }
@@ -61,11 +62,25 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
                 >  
                     {truncateText(title, 72)}
                 </Text>
-                <Text
-                    className='text-white/70 font-light'
+
+                <View
+                    className='flex flex-row-reverse items-center justify-between'
                 >
-                    {formatDate(publishedAt)}
-                </Text>
+                    <Text
+                        className='text-white/70 font-light text-sm'
+                    >
+                        {formatDate(publishedAt)}
+                    </Text>
+                    <Text
+                        className={`${author !== null ? 'w-3/5' : 'w-20'} text-sm font-regular text-white/70 mr-0`}
+                    >
+                        {   
+                            author !== null
+                            ? truncateText(author, 24)
+                            : 'No author'    
+                        }
+                    </Text>
+                </View>
             </View>
 
         </Pressable>

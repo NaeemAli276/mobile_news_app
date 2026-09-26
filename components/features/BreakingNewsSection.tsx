@@ -61,6 +61,12 @@ const BreakingNewsSection = () => {
         return data.articles as Article[];
     };
 
+    const handle_article_press = (article: Article): void => {
+
+        nav.navigate('article', article)
+
+    }
+
     const { isFetching, error, data } = useQuery<Article[]>({
         queryKey: ['get_breaking_news'],
         queryFn: get_breaking_news,
@@ -119,7 +125,7 @@ const BreakingNewsSection = () => {
     
         return (
             <View
-                className='flex flex-col gap-8 w-full h-auto'
+                className='flex flex-col gap-4 w-full h-auto'
             >
 
                 <Text
@@ -142,7 +148,7 @@ const BreakingNewsSection = () => {
                             urlToImage={item.urlToImage}
                             publishedAt={item.publishedAt}
                             content={item.content}
-                            ftn={() => nav.navigate('article', item)}
+                            ftn={() => handle_article_press(item)}
                         />
                     )}
                     showsHorizontalScrollIndicator={false}

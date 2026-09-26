@@ -62,7 +62,7 @@ export default function RootLayout() {
           </SheetProvider>
         </SafeAreaProvider>
       </GestureHandlerRootView>
-      <DevToolsBubble onCopy={onCopy} queryClient={queryClient} />
+      {/* <DevToolsBubble onCopy={onCopy} queryClient={queryClient} /> */}
     </QueryClientProvider>
   );
 }

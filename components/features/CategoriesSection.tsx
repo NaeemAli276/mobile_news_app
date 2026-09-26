@@ -1,6 +1,12 @@
 import { View, Text, FlatList } from 'react-native'
 import React, { useState } from 'react'
-import { Article } from '@/constants/types'
+import { Article, RootStackParamList } from '@/constants/types'
+import SmallNewsCard from '../ui/SmallNewsCard'
+import { useNavigation } from 'expo-router'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { Briefcase, Cpu, Globe, HeartPlus, Microscope, SportShoe, Tv } from 'lucide-react-native'
+import CategoryBtn from './CategoryBtn'
+
 
 const CategoriesSection = () => {
     
@@ -34,15 +40,82 @@ const CategoriesSection = () => {
                 publishedAt:"2026-09-24T04:03:57Z",
                 content:null
             },
-        ])
+    ])
+
+    const [selected_category, set_selected_category] = useState('general')
+
+    const categoryBtns = [
+        {
+            icon: <Globe color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'general'
+        },
+        {
+            icon: <Briefcase color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'business'
+        },
+        {
+            icon: <Tv color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'entertainment'
+        },
+        {
+            icon: <HeartPlus color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'health'
+        },
+        {
+            icon: <Microscope color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'science'
+        },
+        {
+            icon: <SportShoe color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'sports'
+        },
+        {
+            icon: <Cpu color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
+            name: 'technology'
+        },
+    ]
+
     
+    const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+
     return (
         <View
-            className='flex flex-col gap-4 w-full h-auto'
+            className='flex flex-col gap-6 w-full h-auto'
         >
 
             <FlatList
+                data={categoryBtns}
+                keyExtractor={(item, index) => item.name}
+                renderItem={({ item }) => (
+                    <CategoryBtn
+                        ftn={() => set_selected_category(item.name)}
+                        name={item.name}
+                        icon={item.icon}
+                        is_active={selected_category === item.name}
+                    />
+                )}
+                horizontal
+                contentContainerClassName='flex flex-row items-center gap-2'
+                showsHorizontalScrollIndicator={false}
+            />
+
+            <FlatList
                 data={articles}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                    <SmallNewsCard
+                        source={item.source}
+                        author={item.author}
+                        title={item.title}
+                        description={item.description}
+                        url={item.url}
+                        urlToImage={item.urlToImage}
+                        publishedAt={item.publishedAt}
+                        content={item.content}
+                        ftn={() => nav.navigate('article', item)}
+                    />
+                )}
+                contentContainerClassName='mb-56'
             />
 
         </View>

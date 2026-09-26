@@ -12,11 +12,11 @@ const Topbar = () => {
 
     return (
         <View
-            className='w-full h-auto flex flex-row items-center justify-between gap-3 '
+            className='w-full h-auto flex flex-row items-center justify-between gap-3 pb-5'
         >
 
             <Text
-                className='font-medium text-2xl text-teal-500'
+                className='font-semibold text-2xl text-teal-500'
             >
                 Stratum
             </Text>

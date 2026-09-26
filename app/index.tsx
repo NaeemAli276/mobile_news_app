@@ -3,17 +3,20 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Topbar from '../components/features/Topbar'
 import BreakingNewsSection from '@/components/features/BreakingNewsSection'
+import CategoriesSection from '@/components/features/CategoriesSection'
 
 const index = () => {
+  
   return (
     <SafeAreaView
-      className='bg-slate-900 w-full h-screen p-5 px-7 flex flex-col gap-14'
+      className='bg-slate-900 w-full h-screen p-5 px-7 flex flex-col gap-6'
     >
       <Topbar/>
 
       <BreakingNewsSection/>
 
-      
+      <CategoriesSection/>
+
     </SafeAreaView>
   )
 }
