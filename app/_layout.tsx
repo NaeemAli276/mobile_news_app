@@ -25,15 +25,21 @@ export default function RootLayout() {
   };
 
   const [fontsLoaded, error] = useFonts({
-    'Poppins-ExtraLight': require('../assets/fonts/Poppins/Poppins-ExtraLight.ttf'),
-    'Poppins-Light': require('../assets/fonts/Poppins/Poppins-Light.ttf'),
-    'Poppins-Thin': require('../assets/fonts/Poppins/Poppins-Thin.ttf'),
-    'Poppins-light': require('../assets/fonts/Poppins/Poppins-Light.ttf'),
-    'Poppins-Regular': require('../assets/fonts/Poppins/Poppins-Regular.ttf'),
-    'Poppins-Medium': require('../assets/fonts/Poppins/Poppins-Medium.ttf'),
-    'Poppins-SemiBold': require('../assets/fonts/Poppins/Poppins-SemiBold.ttf'),
-    'Poppins-Bold': require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
-    'Poppins-Black': require('../assets/fonts/Poppins/Poppins-Black.ttf'),
+    'Poppins-ExtraLight':    require('../assets/fonts/Poppins/Poppins-ExtraLight.ttf'),
+    'Poppins-Light':         require('../assets/fonts/Poppins/Poppins-Light.ttf'),
+    'Poppins-Thin':          require('../assets/fonts/Poppins/Poppins-Thin.ttf'),
+    'Poppins-Regular':       require('../assets/fonts/Poppins/Poppins-Regular.ttf'),
+    'Poppins-Medium':        require('../assets/fonts/Poppins/Poppins-Medium.ttf'),
+    'Poppins-SemiBold':      require('../assets/fonts/Poppins/Poppins-SemiBold.ttf'),
+    'Poppins-Bold':          require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
+    'Poppins-Black':         require('../assets/fonts/Poppins/Poppins-Black.ttf'),
+    'Newsreader-ExtraLight': require('../assets/fonts/Newsreader/static/Newsreader_14pt-ExtraLight.ttf'),
+    'Newsreader-Light':      require('../assets/fonts/Newsreader/static/Newsreader_14pt-Light.ttf'),
+    'Newsreader-Regular':    require('../assets/fonts/Newsreader/static/Newsreader_14pt-Regular.ttf'),
+    'Newsreader-Medium':     require('../assets/fonts/Newsreader/static/Newsreader_14pt-Medium.ttf'),
+    'Newsreader-SemiBold':   require('../assets/fonts/Newsreader/static/Newsreader_14pt-SemiBold.ttf'),
+    'Newsreader-Bold':       require('../assets/fonts/Newsreader/static/Newsreader_14pt-Bold.ttf'),
+    'Newsreader-ExtraBold':  require('../assets/fonts/Newsreader/static/Newsreader_14pt-ExtraBold.ttf'), 
   })
 
   return (
@@ -62,7 +68,7 @@ export default function RootLayout() {
           </SheetProvider>
         </SafeAreaProvider>
       </GestureHandlerRootView>
-      {/* <DevToolsBubble onCopy={onCopy} queryClient={queryClient} /> */}
+      <DevToolsBubble onCopy={onCopy} queryClient={queryClient} />
     </QueryClientProvider>
   );
 }

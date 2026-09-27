@@ -16,7 +16,8 @@ const SmallNewsCard: React.FC<SmallNewsCardProps> = ({
     url,
     urlToImage,
     publishedAt,
-    content
+    content,
+    ftn
 }) => {
 
     const [thumbnail_error, set_thumbnail_error] = useState(false)
@@ -31,6 +32,7 @@ const SmallNewsCard: React.FC<SmallNewsCardProps> = ({
     return (
         <Pressable
             className='flex flex-row gap-3 w-full h-24'
+            onPress={ftn}
         >
             
             {
@@ -52,10 +54,10 @@ const SmallNewsCard: React.FC<SmallNewsCardProps> = ({
             }
 
             <View
-                className='w-full h-full flex flex-col gap-2'
+                className='w-full h-full flex flex-col gap-6'
             >
                 <Text
-                    className='text-white font-medium mr-20'
+                    className='text-white font-newsreader_medium mr-20'
                 >
                     {truncateText(title, 64)}
                 </Text>
@@ -64,12 +66,12 @@ const SmallNewsCard: React.FC<SmallNewsCardProps> = ({
                     className='flex flex-row items-center justify-between'
                 >
                     <Text
-                        className='text-white/70 font-light text-sm w-auto'
+                        className='text-white/70 font-newsreader_regular text-sm w-auto'
                     >
                         {formatDate(publishedAt)}
                     </Text>
                     <Text
-                        className={`${author !== null ? 'w-3/5' : 'w-auto'} text-sm font-regular text-white/70 `}
+                        className={`${author !== null ? 'w-3/5' : 'w-auto'} text-sm font-newsreader_regular text-white/70 `}
                     >
                         {   
                             author !== null

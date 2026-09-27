@@ -74,9 +74,9 @@ const BreakingNewsSection = () => {
         enabled: false
     })
 
-    useEffect(() => {
-        console.log(articles)
-    }, [articles])
+    // useEffect(() => {
+    //     console.log(articles)
+    // }, [articles])
 
     // if (isFetching) {
     //     return (
@@ -129,7 +129,7 @@ const BreakingNewsSection = () => {
             >
 
                 <Text
-                    className='text-3xl font-bold text-white'
+                    className='text-3xl font-newsreader_semibold text-white'
                 >
                     Top News
                 </Text>
@@ -152,7 +152,7 @@ const BreakingNewsSection = () => {
                         />
                     )}
                     showsHorizontalScrollIndicator={false}
-                    contentContainerClassName='flex flex-row gap-5 h-[21rem] pr-3'
+                    contentContainerClassName='flex flex-row gap-5 h-[19rem] pr-3'
                 />
             </View>
         )

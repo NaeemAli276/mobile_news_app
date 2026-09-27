@@ -9,7 +9,7 @@ const index = () => {
   
   return (
     <SafeAreaView
-      className='bg-slate-900 w-full h-screen p-5 px-7 flex flex-col gap-6'
+      className='bg-slate-900 w-full h-screen p-5 px-7 flex flex-col gap-4'
     >
       <Topbar/>
 

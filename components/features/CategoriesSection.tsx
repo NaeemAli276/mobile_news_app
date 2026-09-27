@@ -4,7 +4,7 @@ import { Article, RootStackParamList } from '@/constants/types'
 import SmallNewsCard from '../ui/SmallNewsCard'
 import { useNavigation } from 'expo-router'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Briefcase, Cpu, Globe, HeartPlus, Microscope, SportShoe, Tv } from 'lucide-react-native'
+import { Briefcase, Cpu, Globe, HeartPlus, Mic, Microscope, SportShoe, Tv } from 'lucide-react-native'
 import CategoryBtn from './CategoryBtn'
 
 
@@ -46,32 +46,39 @@ const CategoriesSection = () => {
 
     const categoryBtns = [
         {
-            icon: <Globe color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'general'
+            icon: <Globe color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <Globe color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'General'
         },
         {
-            icon: <Briefcase color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'business'
+            icon: <Briefcase color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <Briefcase color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'Business'
         },
         {
-            icon: <Tv color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'entertainment'
+            icon: <Tv color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <Tv color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'Entertainment'
         },
         {
-            icon: <HeartPlus color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'health'
+            icon: <HeartPlus color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <HeartPlus color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'Health'
         },
         {
-            icon: <Microscope color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'science'
+            icon: <Microscope color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <Microscope color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'Science'
         },
         {
-            icon: <SportShoe color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'sports'
+            icon: <SportShoe color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <SportShoe color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'Sports'
         },
         {
-            icon: <Cpu color={'#cbd5e1'} strokeWidth={1.5} size={16}/>,
-            name: 'technology'
+            icon: <Cpu color={'#cbd5e1'} strokeWidth={1.5} size={14}/>,
+            active_icon: <Cpu color={'#ffffff'} strokeWidth={1.5} size={14}/>,
+            name: 'Technology'
         },
     ]
 
@@ -85,13 +92,14 @@ const CategoriesSection = () => {
 
             <FlatList
                 data={categoryBtns}
-                keyExtractor={(item, index) => item.name}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => (
                     <CategoryBtn
-                        ftn={() => set_selected_category(item.name)}
+                        ftn={() => set_selected_category(item.name.toLocaleLowerCase())}
                         name={item.name}
                         icon={item.icon}
-                        is_active={selected_category === item.name}
+                        active_icon={item.active_icon}
+                        is_active={selected_category === item.name.toLocaleLowerCase()}
                     />
                 )}
                 horizontal

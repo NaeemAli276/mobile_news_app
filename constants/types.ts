@@ -14,8 +14,8 @@ export interface Article {
 }
 
 export interface ArticleSource {
-    id: string | null;
-    name: string;
+    id: string | null
+    name: string
 }
 
 export type RootStackParamList = {

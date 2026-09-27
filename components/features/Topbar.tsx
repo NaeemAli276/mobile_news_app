@@ -16,9 +16,9 @@ const Topbar = () => {
         >
 
             <Text
-                className='font-semibold text-2xl text-teal-500'
+                className='font-poppins_semibold text-2xl text-teal-500'
             >
-                Stratum
+                News app
             </Text>
 
             <View
@@ -31,7 +31,7 @@ const Topbar = () => {
                             size={20}
                             color={'#14b8a6'}
                             strokeWidth={1.5}
-                            fill={'#14b8a6'}
+                            // fill={'#14b8a6'}
                         />
                     }
                     ftn={() => nav.navigate('bookmarked')}
@@ -44,7 +44,7 @@ const Topbar = () => {
                             size={20}
                             color={'#14b8a6'}
                             strokeWidth={1.5}
-                            fill={'#14b8a6'}
+                            // fill={'#14b8a6'}
                         />
                     }
                     ftn={() => nav.navigate('search')}

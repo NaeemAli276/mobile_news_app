@@ -58,7 +58,7 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
                 className='w-full h-auto flex flex-col gap-2 rounded-b-md p-5 px-2'
             >
                 <Text
-                    className='w-full text-lg text-white font-semibold'
+                    className='w-full text-lg text-white font-newsreader_medium'
                 >  
                     {truncateText(title, 72)}
                 </Text>
@@ -67,12 +67,12 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
                     className='flex flex-row-reverse items-center justify-between'
                 >
                     <Text
-                        className='text-white/70 font-light text-sm'
+                        className='text-white/70 font-newsreader_regular text-sm'
                     >
                         {formatDate(publishedAt)}
                     </Text>
                     <Text
-                        className={`${author !== null ? 'w-3/5' : 'w-20'} text-sm font-regular text-white/70 mr-0`}
+                        className={`${author !== null ? 'w-3/5' : 'w-20'} text-sm font-newsreader_regular text-white/70 mr-0`}
                     >
                         {   
                             author !== null

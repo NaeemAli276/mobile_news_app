@@ -5,11 +5,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        regular: ['Poppins-Regular', 'sans-serif'],
-        medium: ['Poppins-Medium', 'sans-serif'],
-        semibold: ['Poppins-SemiBold', 'sans-serif'],
-        bold: ['Poppins-Bold', 'sans-serif'],
-        black: ['Poppins-Black', 'sans-serif'],
+        poppins_regular: ['Poppins-Regular', 'sans-serif'],
+        poppins_medium: ['Poppins-Medium', 'sans-serif'],
+        poppins_semibold: ['Poppins-SemiBold', 'sans-serif'],
+        poppins_bold: ['Poppins-Bold', 'sans-serif'],
+        poppins_black: ['Poppins-Black', 'sans-serif'],
+
+        newsreader_regular: ['Newsreader-Regular', 'sans-serif'],
+        newsreader_medium: ['Newsreader-Medium', 'sans-serif'],
+        newsreader_semibold: ['Newsreader-SemiBold', 'sans-serif'],
+        newsreader_bold: ['Newsreader-Bold', 'sans-serif'],
       },
       colors: {
         background: '#eff6ff',
