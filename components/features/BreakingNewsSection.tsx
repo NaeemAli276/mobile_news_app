@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import { useQuery } from '@tanstack/react-query'
-import { Article, API_KEY, RootStackParamList } from '@/constants/types'
+import { Article, RootStackParamList } from '@/constants/types'
 import LargeNewsCard from '../ui/LargeNewsCard'
 import { useNavigation } from 'expo-router'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -10,6 +10,8 @@ import { Spinner } from '../ui/Spinner'
 import { Loader, DatabaseX } from 'lucide-react-native'
 
 const BreakingNewsSection = () => {
+
+    const API_KEY = process.env.EXPO_PUBLIC_API_KEY
 
     const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
@@ -46,14 +48,10 @@ const BreakingNewsSection = () => {
     ])
 
     const get_breaking_news = async (): Promise<Article[]> => {
-        console.log('🔥 Running get_breaking_news');
         const url = `https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=${API_KEY}`;
-        console.log('URL:', url.replace(API_KEY, '***'));
         
         const response = await fetch(url);
         const data = await response.json();
-        console.log('Status:', response.status);
-        console.log('Body:', data);
         
         if (!response.ok) {
             throw new Error(`NewsAPI error: ${data.message || response.status}`);

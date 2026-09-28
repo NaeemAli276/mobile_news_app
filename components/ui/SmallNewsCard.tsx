@@ -63,7 +63,7 @@ const SmallNewsCard: React.FC<SmallNewsCardProps> = ({
                 </Text>
 
                 <View
-                    className='flex flex-row items-center justify-between'
+                    className='flex flex-row items-center justify-between '
                 >
                     <Text
                         className='text-white/70 font-newsreader_regular text-sm w-auto'
@@ -71,7 +71,7 @@ const SmallNewsCard: React.FC<SmallNewsCardProps> = ({
                         {formatDate(publishedAt)}
                     </Text>
                     <Text
-                        className={`${author !== null ? 'w-3/5' : 'w-auto'} text-sm font-newsreader_regular text-white/70 `}
+                        className={`${author !== null ? 'w-[55%]' : 'w-auto'} text-sm font-newsreader_regular text-white/70 `}
                     >
                         {   
                             author !== null

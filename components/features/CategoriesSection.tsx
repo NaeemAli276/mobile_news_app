@@ -4,11 +4,13 @@ import { Article, RootStackParamList } from '@/constants/types'
 import SmallNewsCard from '../ui/SmallNewsCard'
 import { useNavigation } from 'expo-router'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Briefcase, Cpu, Globe, HeartPlus, Mic, Microscope, SportShoe, Tv } from 'lucide-react-native'
+import { Briefcase, Cpu, Globe, HeartPlus, Microscope, SportShoe, Tv } from 'lucide-react-native'
 import CategoryBtn from './CategoryBtn'
 
 
 const CategoriesSection = () => {
+
+    const API_KEY = process.env.EXPO_PUBLIC_API_KEY
     
     const [articles, setArticles] = useState<Article[]>([
             {
