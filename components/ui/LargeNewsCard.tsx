@@ -72,7 +72,7 @@ const LargeNewsCard: React.FC<LargeNewsCardProps> = ({
                         {formatDate(publishedAt)}
                     </Text>
                     <Text
-                        className={`${author !== null ? 'w-3/5' : 'w-20'} text-sm font-newsreader_regular text-white/70 mr-0`}
+                        className={`${author !== null ? 'w-3/5' : 'w-1/4'} text-sm font-newsreader_regular text-white/70 mr-0`}
                     >
                         {   
                             author !== null

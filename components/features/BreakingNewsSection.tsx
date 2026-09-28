@@ -72,55 +72,55 @@ const BreakingNewsSection = () => {
         enabled: false
     })
 
-    // useEffect(() => {
-    //     console.log(articles)
-    // }, [articles])
+    useEffect(() => {
+        console.log(articles)
+    }, [articles])
 
-    // if (isFetching) {
-    //     return (
-    //         <View
-    //             className='w-full h-72 bg-neutral-200 flex items-center justify-center rounded-md'
-    //         >
-    //             <Spinner>
-    //                 <Loader/>
-    //             </Spinner>
-    //         </View>
-    //     )
-    // }
-    // else if (error) {
-    //     return (
-    //         <View
-    //             className='w-full h-72 gap-3 bg-neutral-100 flex items-center justify-center rounded-md'
-    //         >
-    //             <View
-    //                 className='p-2 rounded-full'
-    //             >
-    //                 <DatabaseX
-    //                     size={48}
-    //                     strokeWidth={1.5}
-    //                     color={'#000000'}
-    //                 />
-    //             </View>
+    if (isFetching) {
+        return (
+            <View
+                className='w-full h-80 flex items-center justify-center rounded-md'
+            >
+                <Spinner>
+                    <Loader
+                        color={'#14b8a6'}
+                        strokeWidth={1.5}
+                        size={40}
+                    />
+                </Spinner>
+            </View>
+        )
+    }
+    else if (error) {
+        return (
+            <View
+                className='w-full h-72 gap-3 bg-neutral-100 flex items-center justify-center rounded-md'
+            >
+                <DatabaseX
+                    color={'#14b8a6'}
+                    size={44}
+                    strokeWidth={1}
+                    className='animate-spin'
+                />
+                <View
+                    className='flex flex-col gap-1 w-full h-auto items-center justify-center'
+                >
+                    <Text
+                        className='text-2xl font-newsreader_medium text-white'
+                    >
+                        An error has occured
+                    </Text>
+                    <Text
+                        className='text-lg font-newsreader_medium text-white/70 text-center px-5'
+                    >
+                        Type something else in the search bar or restart the app.
+                    </Text>
+                </View>
 
-    //             <View
-    //                 className=''
-    //             >
-    //                 <Text
-    //                     className='text-2xl font-semibold text-center text-black'
-    //                 >
-    //                     Error
-    //                 </Text>
-    //                 <Text
-    //                     className='text-black/70 w-64 text-center'
-    //                 >
-    //                     An error has occured when trying to retrieve articles please refresh the app
-    //                 </Text>
-    //             </View>
-
-    //         </View>
-    //     )
-    // }
-    
+            </View>
+        )
+    }
+    else {
         return (
             <View
                 className='flex flex-col gap-4 w-full h-auto'
@@ -134,7 +134,7 @@ const BreakingNewsSection = () => {
 
                 <FlatList
                     horizontal
-                    data={articles}
+                    data={data}
                     keyExtractor={(item) => item.title}
                     renderItem={({ item }) => (
                         <LargeNewsCard
@@ -155,7 +155,7 @@ const BreakingNewsSection = () => {
             </View>
         )
     }
-
+}
     
 
 export default BreakingNewsSection

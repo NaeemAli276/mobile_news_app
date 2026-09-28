@@ -6,7 +6,8 @@ import { useNavigation } from 'expo-router'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Briefcase, Cpu, Globe, HeartPlus, Microscope, SportShoe, Tv } from 'lucide-react-native'
 import CategoryBtn from './CategoryBtn'
-
+import { useQuery } from '@tanstack/react-query'
+import CategoriesArticlesContainer from './CategoriesArticlesContainer'
 
 const CategoriesSection = () => {
 
@@ -84,12 +85,28 @@ const CategoriesSection = () => {
         },
     ]
 
-    
-    const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+    const get_articles_by_category = async (): Promise<Article[]> => {
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${selected_category}&pageSize=12&apiKey=${API_KEY}`;
+            
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(`NewsAPI error: ${data.message || response.status}`);
+        }
+        return data.articles as Article[];
+    };
+
+    const { isFetching, error, data } = useQuery<Article[]>({
+        queryKey: ['get_article_by_category', selected_category],
+        queryFn: () => get_articles_by_category(),
+        initialData: [],
+        enabled: false
+    })
 
     return (
         <View
-            className='flex flex-col gap-6 w-full h-auto'
+            className='flex flex-col gap-6 w-full h-auto mb-120'
         >
 
             <FlatList
@@ -109,23 +126,10 @@ const CategoriesSection = () => {
                 showsHorizontalScrollIndicator={false}
             />
 
-            <FlatList
-                data={articles}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => (
-                    <SmallNewsCard
-                        source={item.source}
-                        author={item.author}
-                        title={item.title}
-                        description={item.description}
-                        url={item.url}
-                        urlToImage={item.urlToImage}
-                        publishedAt={item.publishedAt}
-                        content={item.content}
-                        ftn={() => nav.navigate('article', item)}
-                    />
-                )}
-                contentContainerClassName='mb-56'
+            <CategoriesArticlesContainer
+                data={data}
+                isFetching={isFetching}
+                error={error}
             />
 
         </View>
