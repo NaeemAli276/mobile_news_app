@@ -4,6 +4,7 @@ import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ChevronLeft, Bookmark, ImageIcon } from 'lucide-react-native'
 import { formatDate } from '@/utils/textUtils'
+import { already_exists, deleteArticle, saveArticle } from '@/storage/articles'
 
 const article = ({  }) => {
 
@@ -22,17 +23,49 @@ const article = ({  }) => {
         set_thumbnail_error(true)
     }
 
+    const handle_change_bookmark = (): void => {
+
+        if (is_bookmarked) {
+            deleteArticle(`${url}`)
+            console.log('is_not_bookmarked')
+            set_is_bookmarked(false)
+        }
+        else {
+
+            const current_article = {
+                source: source,
+                title: title,
+                publishedAt: publishedAt,
+                urlToImage: urlToImage,
+                url: url,
+                description: description,
+                content: content,
+                author: author
+            }
+
+            saveArticle(current_article)
+            set_is_bookmarked(true)
+
+            console.log('is_bookmarked', current_article)
+        }
+
+    }
+
+    // useEffect(() => {
+    //     console.log(`
+    //         source: ${source},
+    //         title: ${title},
+    //         publishedAt: ${publishedAt},
+    //         urlToImage: ${urlToImage},
+    //         url: ${url},
+    //         description: ${description},
+    //         content: ${content},
+    //         author: ${author}
+    //     `)
+    // }, [])
+
     useEffect(() => {
-        console.log(`
-            source: ${source},
-            title: ${title},
-            publishedAt: ${publishedAt},
-            urlToImage: ${urlToImage},
-            url: ${url},
-            description: ${description},
-            content: ${content},
-            author: ${author}
-        `)
+        set_is_bookmarked(already_exists(`${url}`))
     }, [])
 
     return (
@@ -60,6 +93,7 @@ const article = ({  }) => {
                 {/* bookmark btn */}
                 <TouchableOpacity
                     className='p-1'
+                    onPress={() => handle_change_bookmark()}
                 >
                     {
                         is_bookmarked

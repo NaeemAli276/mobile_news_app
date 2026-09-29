@@ -1,14 +1,14 @@
 import { ImageSourcePropType } from "react-native";
 
 export interface Article {
-    source: ArticleSource;
-    author: string | null;
-    title: string;
-    description: string | null;
-    url: string;
-    urlToImage: string;
-    publishedAt: string; // ISO 8601 date string
-    content: string | null;
+    source: ArticleSource | any;
+    author: string | null | any;
+    title: string | any;
+    description: string | null | any;
+    url: string | any;
+    urlToImage: string | any;
+    publishedAt: string | any; // ISO 8601 date string
+    content: string | null | any;
 }
 
 export interface ArticleSource {

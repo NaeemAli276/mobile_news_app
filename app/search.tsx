@@ -21,7 +21,7 @@ const search = () => {
     queryKey: ['search_results', debounced_search_query],
     queryFn: () => handle_search_articles(debounced_search_query),
     // enabled: false,
-    enabled: debounced_search_query.length > 0,
+    enabled: debounced_search_query.length > 1,
     initialData: []
   })
 

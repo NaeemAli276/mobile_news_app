@@ -94,7 +94,7 @@ const BreakingNewsSection = () => {
     else if (error) {
         return (
             <View
-                className='w-full h-72 gap-3 bg-neutral-100 flex items-center justify-center rounded-md'
+                className='w-full h-72 gap-3 flex items-center justify-center rounded-md'
             >
                 <DatabaseX
                     color={'#14b8a6'}
